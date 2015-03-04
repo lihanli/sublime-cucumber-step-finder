@@ -72,10 +72,8 @@ class CucumberBaseCommand(sublime_plugin.WindowCommand, object):
   def step_found(self, index):
     if index >= 0:
       file_path = self.steps[index][2]
-      other_pane = self.determine_other_pane()
-      self.window.focus_group(other_pane)
-      match_view = self.window.open_file(file_path)
-      self.active_ref = (match_view, self.steps[index][1])
+      view = self.window.open_file(file_path)
+      self.active_ref = (view, self.steps[index][1])
       self.mark_step()
 
   def mark_step(self):
